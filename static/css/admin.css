@@ -447,57 +447,341 @@ textarea.main__set-input {
 }
 
 /* ===================================================
-   МОДАЛКИ (временно без изменений — пересоберём на Этапе 4)
+   АДМИН-ПАНЕЛЬ — МОДАЛЬНЫЕ ОКНА ДЛЯ ПК (Этап 4)
    =================================================== */
 
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    padding: 24px;
+    background: rgb(17 17 17 / 0.55);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    &.is-open {
+        display: flex;
+    }
+}
+
+.modal {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 720px;
+    padding: 48px 28px 28px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border-subtle);
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-md);
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: var(--admin-radius-sm);
+    background: transparent;
+    color: var(--admin-text-muted);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background-color var(--admin-transition),
+        color var(--admin-transition);
+
+    @media (hover: hover) {
+        &:hover {
+            background: var(--admin-bg);
+            color: var(--admin-text);
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--admin-accent);
+        outline-offset: 2px;
+    }
+}
+
+.modal__input {
+    height: var(--admin-control-h);
+    margin: 0;
+    padding: 8px 12px;
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-surface);
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--admin-text);
+    outline: none;
+    transition:
+        border-color var(--admin-transition),
+        box-shadow var(--admin-transition);
+
+    &::placeholder {
+        color: var(--admin-text-muted);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--admin-text-muted);
+        }
+    }
+
+    &:focus {
+        border-color: var(--admin-accent);
+        box-shadow: 0 0 0 3px var(--admin-accent-ring);
+    }
+
+    &[type="text"] {
+        flex: 1 0 100%;
+        width: 100%;
+    }
+
+    &[type="file"] {
+        flex: 1 1 260px;
+        width: auto;
+        min-width: 0;
+        padding: 4px 10px 4px 4px;
+        align-content: center;
+        font-size: 13px;
+        color: var(--admin-text-muted);
+        cursor: pointer;
+
+        &::file-selector-button {
+            height: calc(var(--admin-control-h) - 10px);
+            margin-right: 10px;
+            padding: 0 12px;
+            border: 1px solid var(--admin-border);
+            border-radius: 4px;
+            background: var(--admin-bg);
+            color: var(--admin-text);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition:
+                background-color var(--admin-transition),
+                border-color var(--admin-transition);
+        }
+
+        @media (hover: hover) {
+            &:hover::file-selector-button {
+                background: var(--admin-sidebar-bg);
+                border-color: var(--admin-text-muted);
+            }
+        }
+    }
+
+    &[type="checkbox"] {
+        flex: 0 0 auto;
+        width: 22px;
+        height: 22px;
+        padding: 0;
+        border: none;
+        accent-color: var(--admin-accent);
+        cursor: pointer;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--admin-accent);
+            outline-offset: 2px;
+        }
+    }
+}
+
 .modal__prod {
-    width: 200px;
-    height: 49px;
-    padding: 5px 10px;
+    flex: 1 1 200px;
+    width: auto;
+    min-width: 0;
+    height: var(--admin-control-h);
+    padding: 8px 12px;
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-surface);
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--admin-text);
+    outline: none;
+    transition:
+        border-color var(--admin-transition),
+        box-shadow var(--admin-transition);
+
+    &::placeholder {
+        color: var(--admin-text-muted);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--admin-text-muted);
+        }
+    }
+
+    &:focus {
+        border-color: var(--admin-accent);
+        box-shadow: 0 0 0 3px var(--admin-accent-ring);
+    }
+}
+
+select.modal__prod {
+    padding: 0 36px 0 12px;
+    background-color: var(--admin-surface);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a7874' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+    cursor: pointer;
+    appearance: none;
+}
+
+.prod__wrapper-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
 }
 
 .modal__prod-text {
-    padding: 5px 10px;
-    height: 49px;
-    font-size: 16px;
-    resize: none;
+    flex: 1 0 100%;
+    width: 100%;
+    height: auto;
+    min-height: 96px;
+    padding: 10px 12px;
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-surface);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--admin-text);
+    outline: none;
+    resize: vertical;
+    transition:
+        border-color var(--admin-transition),
+        box-shadow var(--admin-transition);
+
+    &::placeholder {
+        color: var(--admin-text-muted);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--admin-text-muted);
+        }
+    }
+
+    &:focus {
+        border-color: var(--admin-accent);
+        box-shadow: 0 0 0 3px var(--admin-accent-ring);
+    }
 }
 
 .modal__prod-file {
-    font-size: 16px;
-    border: 1px solid #767676;
-    padding: 12px 0;
-    width: 270px;
-    border-radius: 5px;
+    flex: 1 1 260px;
+    width: auto;
+    min-width: 0;
+    height: var(--admin-control-h);
+    padding: 4px 10px 4px 4px;
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-surface);
+    font-size: 13px;
+    color: var(--admin-text-muted);
     outline: none;
-    box-sizing: border-box;
-    height: 49px;
+    cursor: pointer;
+    transition:
+        border-color var(--admin-transition),
+        box-shadow var(--admin-transition);
+
+    &::file-selector-button {
+        height: calc(var(--admin-control-h) - 10px);
+        margin-right: 10px;
+        padding: 0 12px;
+        border: 1px solid var(--admin-border);
+        border-radius: 4px;
+        background: var(--admin-bg);
+        color: var(--admin-text);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition:
+            background-color var(--admin-transition),
+            border-color var(--admin-transition);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--admin-text-muted);
+        }
+
+        &:hover::file-selector-button {
+            background: var(--admin-sidebar-bg);
+            border-color: var(--admin-text-muted);
+        }
+    }
+
+    &:focus {
+        border-color: var(--admin-accent);
+        box-shadow: 0 0 0 3px var(--admin-accent-ring);
+    }
 }
 
 .modal__prod-ch {
-    width: 29px;
-    height: 29px;
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    accent-color: var(--admin-accent);
     cursor: pointer;
+
+    &:focus-visible {
+        outline: 2px solid var(--admin-accent);
+        outline-offset: 2px;
+    }
 }
 
-
-/* Фиксированная ширина колонок */
-.w50 {
-    width: 50px;
+.modal__btn {
+    height: var(--admin-control-h);
+    margin-left: auto;
+    padding: 0 22px;
     flex-shrink: 0;
-}
+    border: none;
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-accent);
+    color: var(--color-white);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    transition: background-color var(--admin-transition);
 
-.w100 {
-    width: 100px;
-    flex-shrink: 0;
-}
+    @media (hover: hover) {
+        &:hover {
+            background: var(--admin-accent-hover);
+        }
+    }
 
-.w150 {
-    width: 150px;
-    flex-shrink: 0;
-}
+    &:active {
+        background: var(--admin-accent-active);
+    }
 
-.w300 {
-    width: 300px;
-    flex-grow: 1;
+    &:focus-visible {
+        outline: 2px solid var(--admin-accent);
+        outline-offset: 2px;
+    }
 }
