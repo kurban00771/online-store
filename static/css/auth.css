@@ -1,92 +1,166 @@
+/* ===================================================
+   СТРАНИЦА ВХОДА В АДМИН-ПАНЕЛЬ
+   =================================================== */
+
 .auth {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* padding-top: 130px; */
     width: 100%;
-    height: 100vh;
-    background: var(--color-background-blue);
-    overflow: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 24px 16px;
+    background: var(--admin-bg);
+    color: var(--admin-text);
 }
 
 .auth__container {
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: -50px;
-    /* align-items: center; */
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .auth__logo {
-    width: 150px;
-    margin: 0 auto;
+    display: block;
+    width: 140px;
+    height: auto;
 }
 
 .auth__card {
-    border: 1px solid var(--color-muted-gray-transparent);
-    border-radius: 10px;
-    width: 400px;
-    margin: 0 auto;
-    background: var(--color-background-auth);
-    padding: 60px 30px;
-    user-select: none;
-}
-
-.auth__name {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.auth__login {
     width: 100%;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    font-size: 18px;
-    border-radius: 6px;
-    border: none;
+    padding: 36px 32px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border-subtle);
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-md);
 }
 
+.auth__name,
 .auth__cipher {
-    font-size: 22px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--admin-text-muted);
 }
 
+.auth__login,
 .auth__pass {
     width: 100%;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    font-size: 18px;
-    border-radius: 6px;
-    border: none;
+    height: var(--admin-control-h);
+    margin-bottom: 18px;
+    padding: 8px 12px;
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-surface);
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--admin-text);
+    outline: none;
+    transition:
+        border-color var(--admin-transition),
+        box-shadow var(--admin-transition);
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--admin-text-muted);
+        }
+    }
+
+    &:focus {
+        border-color: var(--admin-accent);
+        box-shadow: 0 0 0 3px var(--admin-accent-ring);
+    }
 }
 
 .auth__btns {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
+    margin-top: 6px;
 }
 
 .auth__left {
     display: flex;
-    gap: 10px;
-    font-size: 18px;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    user-select: none;
 }
 
 .auth__left input {
     width: 18px;
     height: 18px;
+    accent-color: var(--admin-accent);
+    cursor: pointer;
+
+    &:focus-visible {
+        outline: 2px solid var(--admin-accent);
+        outline-offset: 2px;
+    }
+}
+
+.auth__left label {
+    cursor: pointer;
 }
 
 .auth__enter {
-    padding: 8px 14px;
-    background: var(--color-btn-enter);
-    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--admin-control-h);
+    padding: 0 24px;
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-accent);
     color: var(--color-white);
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
     cursor: pointer;
-    transition: 0.25s;
+    user-select: none;
+    transition: background-color var(--admin-transition);
+
+    @media (hover: hover) {
+        &:hover {
+            background: var(--admin-accent-hover);
+        }
+    }
 
     &:active {
-        background: var(--color-btn-enter-light);
+        background: var(--admin-accent-active);
+    }
+}
+
+@media (max-width: 480px) {
+    .auth {
+        padding: 16px 12px;
+    }
+
+    .auth__logo {
+        width: 120px;
+    }
+
+    .auth__card {
+        padding: 24px 20px;
+    }
+
+    .auth__login,
+    .auth__pass {
+        font-size: 16px;
+    }
+
+    .auth__btns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .auth__enter {
+        width: 100%;
     }
 }

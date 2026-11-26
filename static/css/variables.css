@@ -39,15 +39,15 @@
     --color-muted-dark: #393939;
     --color-muted-gray: #7a7874;
     --color-background: #ededed;
-    --color-background-blue: #bfd4ed;
-    --color-background-auth: #dddddd;
+    /* --color-background-blue: #bfd4ed; */
+    /* --color-background-auth: #dddddd; */
 
     --color-dark-transparent: #000000b3;
     --color-gray-transparent: #0000000f;
     --color-muted-gray-transparent: #7a787438;
 
-    --color-btn-enter: #268cf2;
-    --color-btn-enter-light: #2077ce;
+    /* --color-btn-enter: #268cf2;
+    --color-btn-enter-light: #2077ce; */
 
     /* Токены админ-панели (в единой тёплой гамме с сайтом) */
     --admin-bg: #f4f3ef;

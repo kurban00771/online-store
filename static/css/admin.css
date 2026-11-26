@@ -785,3 +785,257 @@ select.modal__prod {
         outline-offset: 2px;
     }
 }
+
+
+/* ===================================================
+   АДМИН-ПАНЕЛЬ — АДАПТИВ ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ (Этап 5)
+   =================================================== */
+
+@media (max-width: 1024px) {
+    .admin__container {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        align-items: center;
+        height: auto;
+        padding: 10px 24px;
+        border-right: none;
+        border-bottom: 1px solid var(--admin-border);
+        overflow-x: auto;
+        overflow-y: hidden;
+        z-index: 100;
+    }
+
+    .sidebar__link {
+        width: auto;
+        justify-content: center;
+        padding: 9px 16px;
+        white-space: nowrap;
+
+        &.is-active {
+            &::before {
+                top: auto;
+                bottom: 0;
+                left: 10px;
+                right: 10px;
+                width: auto;
+                height: 3px;
+                border-radius: 3px 3px 0 0;
+            }
+        }
+    }
+
+    .main__section {
+        padding: 24px 24px 40px;
+    }
+
+    .main__h1 {
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        font-size: 24px;
+    }
+
+    .main__h2 {
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .main__set-block {
+        padding: 18px 20px;
+    }
+
+    .main__set-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .main__list-top,
+    .main__li {
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .main__img {
+        width: 60px;
+        height: 45px;
+    }
+
+    .w50 {
+        width: 40px;
+    }
+
+    .w100 {
+        width: 84px;
+    }
+
+    .w150 {
+        width: 120px;
+    }
+
+    .w300 {
+        flex: 1 1 160px;
+    }
+
+    .modal {
+        max-height: calc(100vh - 48px);
+        max-height: calc(100dvh - 48px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+}
+
+@media (max-width: 768px) {
+    .main__list-top {
+        display: none;
+    }
+
+    .main__list {
+        border-top: 1px solid var(--admin-border-subtle);
+        border-radius: var(--admin-radius-md);
+    }
+
+    .main__li {
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        padding: 14px 16px;
+    }
+
+    .main__img {
+        width: 56px;
+        height: 42px;
+    }
+
+    .main__wrapper {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px 12px;
+    }
+
+    .main__name,
+    .main__cat {
+        overflow-wrap: anywhere;
+    }
+
+    .w50,
+    .w100,
+    .w150 {
+        width: auto;
+        flex: 0 1 auto;
+    }
+
+    .w300 {
+        flex: 1 1 160px;
+    }
+}
+
+@media (max-width: 640px) {
+    .sidebar {
+        gap: 4px;
+        padding: 8px 12px;
+    }
+
+    .sidebar__link {
+        flex: 1 0 auto;
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    .main__section {
+        padding: 16px 12px 32px;
+    }
+
+    .main__h1 {
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        font-size: 22px;
+    }
+
+    .main__h2 {
+        margin-top: 20px;
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+
+    .main__set-block {
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .main__set-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .main__set-label {
+        flex: 1 0 100%;
+        width: 100%;
+    }
+
+    .main__set-input:not([type="file"]),
+    .main__set-desc,
+    .main__set-block .custom-select {
+        font-size: 16px;
+    }
+
+    .main__set-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .overlay {
+        padding: 12px;
+    }
+
+    .modal {
+        gap: 12px;
+        max-height: calc(100vh - 24px);
+        max-height: calc(100dvh - 24px);
+        padding: 44px 16px 20px;
+    }
+
+    .close {
+        top: 8px;
+        right: 8px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .modal__input {
+        &[type="text"] {
+            font-size: 16px;
+        }
+
+        &[type="file"] {
+            flex: 1 0 100%;
+            width: 100%;
+        }
+    }
+
+    .modal__prod {
+        flex: 1 0 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .prod__wrapper-bottom {
+        gap: 12px;
+    }
+
+    .modal__prod-text {
+        min-height: 88px;
+        font-size: 16px;
+    }
+
+    .modal__prod-file {
+        flex: 1 0 100%;
+        width: 100%;
+    }
+
+    .modal__btn {
+        flex: 1;
+        margin-left: 0;
+    }
+}
