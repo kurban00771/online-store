@@ -1,0 +1,244 @@
+const express = require('express');
+const app = express();
+const hbs = require('hbs');
+const aboutData = require('./db/about.json');
+const catData = require('./db/categories.json');
+const prodData = require('./db/products.json');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+
+
+
+app.listen(3000, listen);
+
+
+const catDir = path.join(__dirname, './static/img/categories');
+if (!fs.existsSync(catDir)) {
+    fs.mkdirSync(catDir);
+}
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, __dirname + '/static/img/categories'); // Куда сохранять
+    },
+    filename: (req, file, cb) => {
+        // Генерация уникального имени с оригинальным расширением
+        // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+        // cb(null, uniqueSuffix + path.extname(file.originalname));
+        const name = file.originalname;
+        cb(null, name);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) {
+        cb(null, true);
+    } else {
+        cb(new Error('Разрешены только изображения!'), false);
+    }
+};
+
+const upload = multer({
+    storage,
+    fileFilter,
+    limits: { fileSize: 5 * 1024 * 1024 } // Ограничение: 5 МБ
+});
+
+
+
+app.use('/', express.static(__dirname + '/static'));
+app.use(express.json());
+
+app.use(session({
+    store: new FileStore({
+        path: './sessions', 
+        ttl: 30 * 24 * 60 * 60, 
+        reapInterval: 24 * 60 * 60 
+    }),
+    secret: process.env.SESSION_SECRET || '8f9d2a7b4c1e6f039a8b5d2c7e4f1a098b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        sameSite: 'lax'
+        //secure: true на HTTPS добавьте 
+    } 
+}));
+
+app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
+
+// app.js
+app.use((req, res, next) => {
+    // Рекомендуется прокидывать конкретные поля, либо сам req
+    res.locals.req = req;
+    // или отдельные данные:
+    //   res.locals.currentUser = req.user;
+    //   res.locals.currentPath = req.path;
+    next();
+});
+
+function requireAuth(req, res, next) {
+    if (req.session.isAdmin) return next();
+    if (req.method === 'GET') return res.redirect('/admin/auth');
+    res.status(401).json({ error: 'Требуется авторизация' });
+}
+
+app.post('/add_cat', requireAuth, upload.single('photo'), addCat);
+app.get('/get_prod', getProd);
+app.get('/get_cat', getCat);
+app.post('/check_auth', checkAuth);
+app.use('/admin/auth', auth);
+app.use('/admin', requireAuth);
+app.use('/admin/settings', adminSet);
+app.use('/admin/products', adminProd);
+app.use('/admin/categories', adminCat);
+app.use('/category', category);
+app.use('/contact', contact);
+app.use('/about', about);
+app.use('/', index);
+
+
+
+
+
+function addCat(req, res) {
+    if (!req.file) {
+        return res.status(400).json({ error: 'Файл не был загружен' });
+    }
+
+    // req.file содержит информацию о сохраненном файле
+    res.json({
+        message: 'Файл успешно загружен',
+        filename: req.file.filename,
+        path: req.file.path,
+        size: req.file.size
+    });
+    const name = req.body.name;
+    const photoName = req.file.filename;
+
+    let id = catData.at(-1)?.id || 0;
+    id++;
+
+    // const id = Date.now();
+    catData.push({ id, title: name, img: photoName, active: true });
+    fs.writeFileSync('./db/categories.json', JSON.stringify(catData));
+}
+
+function getProd(req, res) {
+    res.send(prodData)
+}
+
+function getCat(req, res) {
+    res.send(catData)
+}
+
+async function checkAuth(req, res) {
+    const { login, pass, remember } = req.body;
+    const { login: loginTrue, passwordHash } = aboutData.auth;
+
+    const passOk = await bcrypt.compare(String(pass ?? ''), passwordHash);
+
+    if (login === loginTrue && passOk) {
+        req.session.isAdmin = true;
+        if (remember) req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 дней
+        res.send('Успешно');
+    } else {
+        res.status(401).send('Неверно');
+    }
+}
+
+function adminSet(req, res) {
+    res.render('admin_set.hbs')
+}
+function adminProd(req, res) {
+    res.render('admin_prod.hbs', { aboutData, catData, prodData })
+}
+
+function adminCat(req, res) {
+    res.render('admin_cat.hbs')
+}
+
+function auth(req, res) {
+    res.render('auth.hbs')
+}
+
+function category(req, res) {
+    res.render('category.hbs', { aboutData, catData, prodData })
+}
+
+function contact(req, res) {
+    res.render('contact.hbs', { aboutData, catData, prodData })
+}
+
+function about(req, res) {
+    res.render('about.hbs', { aboutData, catData, prodData })
+}
+
+function index(req, res) {
+    res.render('index.hbs', { aboutData, catData, prodData })
+}
+
+function listen() {
+    console.log('Servak sluhaet')
+}
+
+
+
+hbs.registerHelper('getTitle', (t, option) => {
+    const req = option.data.root.req;
+    let id = req.query.id;
+    let cat = catData.find(el => el.id == id);
+    // console.log(r.query.id)
+    return (cat.title);
+})
+
+hbs.registerHelper('getProducts', (t, option) => {
+    const req = option.data.root.req;
+    let id = req.query.id;
+    let prods = prodData.filter(el => el.categorie == id);
+    let html = '';
+    if (prods.length == 0) {
+        html = '<h2>Временно нет товаров</h2>'
+        return (new hbs.SafeString(html));
+    }
+    for (let el of prods) {
+        if (!el.active) continue;
+        html += `
+            <div class="products__card-inner" id="${el.id}">
+                <img src="/img/products/${el.img}" alt="" class="products__card-img">
+                <p class="products__cat">Пиццы</p>
+                <h3 class="products__card-name">${el.title}</h3>
+                    <p class="products__desc">${el.desc || ''}</p>
+                    <div class="products__card-bottom">
+                        <p class="products__price">${el.price}р</p>
+                        <div class="products__count">
+                            <button class="products__minus-btn">-</button>
+                            <input type="text" class="products__count-input" readonly placeholder="1">
+                            <button class="products__plus-btn">+</button>
+                        </div>
+                        <a href="#" class="products__basket">
+                            <img src="/img/cart.svg" alt="Корзина">
+                        </a>
+                    </div>
+            </div>
+        `
+    }
+    return (new hbs.SafeString(html));
+})
+
+
+
+
+
+
+// res.render('about.hbs', aboutData)
+
+// res.render('about.hbs', {
+//     ...aboutData,
+//     ...contactDataData
+// });

@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "title": "Пиццы",
+    "img": "pizza.jpg",
+    "active": true
+  },
+  {
+    "id": 2,
+    "title": "Завтраки",
+    "img": "breakfasts.jpg",
+    "active": true
+  },
+  {
+    "id": 3,
+    "title": "Гарниры",
+    "img": "garniers.jpg",
+    "active": true
+  },
+  {
+    "id": 4,
+    "title": "Шашлыки",
+    "img": "shashlik.jpg",
+    "active": true
+  },
+  {
+    "id": 5,
+    "title": "Супы",
+    "img": "soups.jpg",
+    "active": true
+  },
+  {
+    "id": 6,
+    "title": "Чуду и мучное",
+    "img": "pie.jpg",
+    "active": true
+  },
+  {
+    "id": 7,
+    "title": "Мясные",
+    "img": "meat_dishes.jpg",
+    "active": true
+  },
+  {
+    "id": 8,
+    "title": "Салаты",
+    "img": "salads.jpg",
+    "active": true
+  },
+  {
+    "id": 9,
+    "title": "Роллы",
+    "img": "rolls.jpg",
+    "active": true
+  },
+  {
+    "id": 10,
+    "title": "Десерты",
+    "img": "dessert.jpg",
+    "active": true
+  },
+  {
+    "id": 11,
+    "title": "Горячие напитки",
+    "img": "hot_drinks.jpg",
+    "active": true
+  },
+  {
+    "id": 12,
+    "title": "Холодные напитки",
+    "img": "cold_drinks.jpg",
+    "active": true
+  },
+  {
+    "id": 13,
+    "title": "Бургеры",
+    "img": "burgers.jpg",
+    "active": true
+  },
+  {
+    "id": 14,
+    "title": "Пасты",
+    "img": "pastes.jpg",
+    "active": true
+  },
+  {
+    "id": 15,
+    "title": "Попкорн",
+    "img": "1795015553131-362826222.webp",
+    "active": true
+  },
+  {
+    "id": 16,
+    "title": "Мороженое",
+    "img": "1795196480176-759404618.jpg",
+    "active": true
+  }
+]

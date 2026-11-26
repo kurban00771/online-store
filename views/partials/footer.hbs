@@ -1,0 +1,92 @@
+<footer class="footer">
+    <div class="footer__wrapper-top">
+        <div class="container">
+            <div class="footer__wrapper-left">
+                <a href="/" class="footer__logo-link">
+                    <img src="/img/logo.png" alt="Логотип" class="footer__logo">
+                </a>
+                <a href="/about" class="footer__link">О нас</a>
+                <a href="/contact" class="footer__link">Контакты</a>
+            </div>
+
+            <div class="footer__wrapper-right">
+                <a href="{{aboutData.max}}" target="_blank" class="footer__wrapper-link">
+                    <img src="/img/max.svg" alt="" class="footer__wrapper-icon">
+                </a>
+                <a href="{{aboutData.wts}}" target="_blank" class="footer__wrapper-link">
+                    <img src="/img/wts.svg" alt="" class="footer__wrapper-icon">
+                </a>
+                <a href="{{aboutData.telegram}}" target="_blank" class="footer__wrapper-link">
+                    <img src="/img/telegram.svg" alt="" class="footer__wrapper-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <div class="container">
+            <div class="footer__bottom-left">
+                <nav class="footer__cat">
+                    <p class="footer__cat-name">Меню</p>
+                    <ul class="footer__nav-lists">
+
+                        {{#each catData}}
+                        <li class="footer__lists-link">
+                            <a href="/category?id={{this.id}}">{{this.title}}</a>
+                        </li>
+                        {{/each}}
+
+                        {{!-- <div class="main__cart">
+                            <a href="/category?id={{this.id}}" class="main__cart-link">
+                                <img src="/img/categories/{{this.img}}" alt="" class="main__cart-img">
+                                <h3 class="main__cart-name">{{this.title}}</h3>
+                            </a>
+                        </div> --}}
+
+                        {{!-- <li class="footer__lists-link">Пицца</li>
+                        <li class="footer__lists-link">Завтраки</li>
+                        <li class="footer__lists-link">Гарниры</li> --}}
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__bottom-right">
+                <nav class="footer__address">
+                    <p class="footer__cat-name">Адрес</p>
+                    <p class="footer__cat-address">Кисловодск</p>
+                    <p class="footer__cat-address">{{aboutData.address1}}</p>
+                    <p class="footer__cat-address">{{aboutData.address2}}</p>
+                    {{!-- {{#each aboutData.address}}
+                    <p class="footer__cat-address">{{this}}</p>
+                    {{/each}} --}}
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="footer__wrapper-copyright">
+        <div class="container">
+            <p class="footer__copy">Кафе © .Все права защищены.
+                2025 -
+                <script>document.write(new Date().getFullYear());</script>
+            </p>
+            <p class="footer__copy">Сайт создан на
+                <a href="https://labloop.ru" class="footer__copy-link" target="_blank">LabLoop.ru</a>
+            </p>
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+
+
+
+{{!-- <div class="footer__left">
+    <img src="/img/logo.png" alt="Логотип" class="footer__logo">
+    <a href="/about" class="footer__link">О нас</a>
+    <a href="/contact" class="footer__link">Контакты</a>
+</div>
+
+<div class="footer__right">
+    <a href="tel:89281000000" class="footer__link">+7(928)100-00-00</a>
+</div> --}}

@@ -1,0 +1,324 @@
+/* ===================================================
+   АДМИН-ПАНЕЛЬ (admin.css)
+   =================================================== */
+
+.admin__container {
+    display: grid;
+    grid-template-columns: var(--admin-sidebar-w) minmax(0, 1fr);
+    width: 100%;
+    min-height: 100vh;
+    background: var(--admin-bg);
+    color: var(--admin-text);
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    height: 100vh;
+    padding: 24px 14px;
+    background: var(--admin-sidebar-bg);
+    border-right: 1px solid var(--admin-border);
+    overflow-y: auto;
+}
+
+.sidebar__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: var(--admin-radius-sm);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--admin-text);
+    text-decoration: none;
+    transition:
+        background-color var(--admin-transition),
+        color var(--admin-transition),
+        box-shadow var(--admin-transition);
+
+    @media (hover: hover) {
+        &:hover {
+            background: var(--admin-sidebar-hover);
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--admin-accent);
+        outline-offset: 2px;
+    }
+
+    &.is-active {
+        background: var(--admin-surface);
+        color: var(--admin-text);
+        font-weight: 700;
+        box-shadow: var(--admin-shadow-sm);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            bottom: 8px;
+            left: 0;
+            width: 3px;
+            border-radius: 0 3px 3px 0;
+            background: var(--admin-accent);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background: var(--admin-surface);
+            }
+        }
+    }
+}
+
+.main__section {
+    min-width: 0;
+    padding: 32px 40px 48px;
+}
+
+.main__h1 {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--admin-border);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--admin-text);
+}
+
+.main__h2 {
+    margin-top: 28px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--admin-text);
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+/* Форма добавления товаров */
+.main__set-block {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-dark);
+    padding-bottom: 20px;
+    align-items: flex-end;
+}
+
+/* .photo {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+} */
+
+.main__set-wrapper {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    /* flex-wrap: wrap; */
+}
+
+.main__set-desc {
+    width: 420px;
+    height: 42px;
+    padding: 8px 10px;
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+    resize: none;
+}
+
+.main__set-label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main__set-text {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #555555;
+    font-weight: 500;
+}
+
+.main__set-input {
+    height: 42px;
+    font-size: 16px;
+    border: 1px solid #b3b3b3;
+    padding: 8px 10px;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+textarea.main__set-input {
+    height: 100px;
+    font-size: 16px;
+    border: 1px solid #b3b3b3;
+    padding: 8px 10px;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+.main__set-input:focus {
+    border-color: #11b470;
+}
+
+/* Селект выбора категории в админке */
+.main__set-block .custom-select {
+    height: 42px;
+    font-size: 15px;
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+    padding: 0 35px 0 10px;
+    background-color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%23555555'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+}
+
+.main__set-btn {
+    height: 42px;
+    padding: 8px 18px;
+    font-size: 16px;
+    border: none;
+    color: #ffffff;
+    background: #11b470;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+
+.main__set-btn:hover {
+    background-color: #12c279;
+}
+
+.main__set-btn:active {
+    background-color: #14d786;
+}
+
+/* Таблица списка товаров */
+.main__list-top,
+.main__li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main__list-top {
+    background: darkgray;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.main__li {
+    background: lightgray;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.main__li:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+.main__img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.main__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.main__active {
+    margin-left: auto;
+    text-align: right;
+}
+
+.modal__prod {
+  width: 200px;
+  /* width: 217px; */
+  height: 49px;
+  padding: 5px 10px;
+}
+
+.modal__prod-text {
+  padding: 5px 10px;
+  height: 49px;
+  font-size: 16px;
+  resize: none;
+}
+
+.modal__prod-file {
+  font-size: 16px;
+  border: 1px solid #767676;
+  padding: 12px 0;
+  width: 270px;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  height: 49px;
+  /* background: #ffffff; */
+}
+
+.modal__prod-ch {
+  width: 29px;
+  height: 29px;
+  cursor: pointer;
+}
+
+/* Фиксированная ширина колонок */
+.w50 {
+    width: 50px;
+    flex-shrink: 0;
+}
+
+.w100 {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.w150 {
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.w300 {
+    width: 300px;
+    flex-grow: 1;
+}

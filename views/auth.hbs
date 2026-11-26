@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+{{>head}}
+
+<body>
+    <div class="auth">
+        <div class="auth__container">
+            <img src="/img/logo_auth.avif" alt="Логотип" class="auth__logo">
+            <div class="auth__card">
+                <p class="auth__name">Логин</p>
+                <input type="text" class="auth__login" id="login">
+                <p class="auth__cipher">Пароль</p>
+                <input type="password" class="auth__pass" id="password">
+                <div class="auth__btns">
+                    <div class="auth__left">
+                        <input type="checkbox" value="yes" id="memento">
+                        <label for="memento">Запомнить меня</label>
+                    </div>
+                    <div class="auth__enter" id="btn">Войти</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- <script src="/js/md5.js"></script> --}}
+    <script src="/js/auth.js"></script>
+</body>
+
+</html>

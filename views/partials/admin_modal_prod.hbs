@@ -1,0 +1,31 @@
+{{!-- <button id="open-btn">Открыть окно</button> --}}
+<div id="modal-overlay" class="overlay">
+    <div id="prod_modal" class="modal">
+        <button id="close-btn" class="close">&times;</button>
+
+        <input id="prod_name" type="text" class="modal__prod" placeholder="Название">
+
+        <select id="prod_cat" class="modal__prod">
+            <option value="" disabled selected>Выберите категорию</option>
+            {{#each catData}}
+            <option value="{{this.id}}">{{this.title}}</option>
+            {{/each}}
+        </select>
+
+        <input type="text" class="modal__prod" id="prod_price" placeholder="Цена">
+
+
+        <div class="prod__wrapper-bottom">
+
+            <textarea class="modal__prod-text" id="prod_desc" placeholder="Введите описание"></textarea>
+
+            <input id="prod_image" type="file" class="modal__prod-file">
+
+            <input id="prod_active" type="checkbox" class="modal__prod-ch">
+
+            <button id="prod_edit" class="modal__btn">Изменить</button>
+        </div>
+        <span hidden id="prod_id"></span>
+    </div>
+</div>
+

@@ -1,0 +1,174 @@
+.header {
+  background: var(--color-gray);
+  padding: 10px;
+
+  & .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.header__left {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__logo-link {
+  display: flex;
+}
+
+.header__logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  max-width: 100%;
+}
+
+.header__right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__link {
+  font-size: 18px;
+  /* color: #111; */
+  color: var(--color-dark);
+}
+
+/* Меню на десктопе */
+.menu {
+  display: block;
+
+  & .menu__btn {
+    display: none;
+  }
+
+  & .menu__list {
+    display: none;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__logo {
+    height: 30px;
+  }
+
+  .header__link {
+    display: none;
+  }
+
+  .menu {
+    & .menu__btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 24px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      z-index: 100;
+
+      & span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #000;
+        border-radius: 2px;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+      }
+
+      &.menu__btn--active {
+        z-index: 100;
+
+        & span:nth-child(1) {
+          transform: translateY(10.5px) rotate(45deg);
+        }
+
+        & span:nth-child(2) {
+          opacity: 0;
+        }
+
+        & span:nth-child(3) {
+          transform: translateY(-10.5px) rotate(-45deg);
+        }
+      }
+    }
+
+    /* Выдвижная панель */
+    & .menu__list {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      background: #fdfdf0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Начинаем не из центра, а сверху с красивым отступом под крестик */
+      justify-content: flex-start;
+      padding: 120px 24px 40px;
+      margin: 0;
+      z-index: 90;
+
+      transform: translateY(-100%);
+      visibility: hidden;
+      transition:
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.4s;
+
+      &.menu--active {
+        transform: translateY(0);
+        visibility: visible;
+      }
+    }
+
+    /* Пункты списка растягиваются и разделяются линиями */
+    & .menu__item {
+      width: 100%;
+      max-width: 320px; /* Чтобы на планшетах линии не тянулись во весь экран */
+      text-align: center;
+      border-bottom: 1px solid rgba(14, 13, 13, 0.12);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:first-child {
+        border-top: none;
+        /* border-top: 1px solid rgba(14, 13, 13, 0.12); */
+      }
+    }
+
+    /* Ссылки с большой областью нажатия */
+    & .menu__link {
+      display: block;
+      width: 100%;
+      padding: 18px 0;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #0e0d0d;
+      transition: color 0.2s ease, opacity 0.2s ease;
+
+      &:active {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+

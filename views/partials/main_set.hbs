@@ -1,0 +1,117 @@
+<section class="main__section">
+    <h1 class="main__h1">Настройки</h1>
+    <h2 class="main__h2">Социальные ссылки</h2>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Телеграм</p>
+            <input type="text" class="main__set-input" id="telegram" placeholder="Телеграм">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">WhatsApp</p>
+            <input type="text" class="main__set-input" id="wts" placeholder="WhatsApp">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Макс</p>
+            <input type="text" class="main__set-input" id="max" placeholder="Макс">
+        </label>
+        <button class="main__set-btn" id="soc_btn">Изменить</button>
+    </div>
+    <h2 class="main__h2">Страница о нас</h2>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Заголовок</p>
+            <input type="text" class="main__set-input" id="desc_title" placeholder="Заголовок">
+            <p class="main__set-text">Описание</p>
+            <textarea class="main__set-input" id="desc" placeholder="Описание"></textarea>
+            {{!-- <input type="text" class="main__set-input" id="desc" placeholder="Описание"> --}}
+        </label>
+        {{!-- <button class="main__set-btn" id="desc_btn">Изменить</button> --}}
+    </div>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Заголовок блока о нас</p>
+            <input type="text" class="main__set-input" id="about_title" placeholder="Заголовок блока о нас">
+            <p class="main__set-text">Описание блока о нас</p>
+            <textarea class="main__set-input" id="about_desc" placeholder="Описание блока о нас"></textarea>
+        </label>
+        {{!-- <button class="main__set-btn" id="about__block-btn">Изменить</button> --}}
+    </div>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Картинка о нас 1</p>
+            <input type="file" class="main__set-input" id="about_img1">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Картинка о нас 2</p>
+            <input type="file" class="main__set-input" id="about_img2">
+        </label>
+        <button class="main__set-btn" id="about_btn">Изменить</button>
+    </div>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Фото в контактах</p>
+            <input type="file" class="main__set-input" id="img_bg">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Картинка контактов 1</p>
+            <input type="file" class="main__set-input" id="cont_img1">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Картинка контактов 2</p>
+            <input type="file" class="main__set-input" id="cont_img2">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Картинка контактов 3</p>
+            <input type="file" class="main__set-input" id="cont_img3">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Картинка контактов 4</p>
+            <input type="file" class="main__set-input" id="cont_img4">
+        </label>
+        <button class="main__set-btn" id="photo_btn">Изменить</button>
+    </div>
+    <h2 class="main__h2">Телефоны</h2>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Заказы</p>
+            <input type="text" class="main__set-input" id="tel" placeholder="Номер">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Заказы видимая часть</p>
+            <input type="text" class="main__set-input" id="view" placeholder="Видимая часть">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Бронь столиков</p>
+            <input type="text" class="main__set-input" id="tel2" placeholder="Номер">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Бронь видимая часть</p>
+            <input type="text" class="main__set-input" id="view2" placeholder="Видимая часть">
+        </label>
+        <button class="main__set-btn" id="tel_btn">Изменить</button>
+    </div>
+    <h2 class="main__h2">Адреса</h2>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Первый адрес</p>
+            <input type="text" class="main__set-input" id="address1" placeholder="Адрес">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Второй адрес</p>
+            <input type="text" class="main__set-input" id="address2" placeholder="Адрес">
+        </label>
+        <button class="main__set-btn" id="address_btn">Изменить</button>
+    </div>
+</section>
+
+    {{!-- <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Заголовок блока о нас</p>
+            <input type="text" class="main__set-input" id="about__title" placeholder="Заголовок блока о нас">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Описание блока о нас</p>
+            <input type="text" class="main__set-input" id="about__desc" placeholder="Описание блока о нас">
+        </label>
+        <button class="main__set-btn" id="about__block-btn">Изменить</button>
+    </div> --}}

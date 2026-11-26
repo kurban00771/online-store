@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url('/css/fonts/roboto-cyrillic-100-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/css/fonts/roboto-cyrillic-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/css/fonts/roboto-cyrillic-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/css/fonts/roboto-cyrillic-700-normal.woff2') format('woff2');
+}
+
+:root {
+    /* Базовая палитра сайта */
+    --color-dark: #111;
+    --color-white: #fff;
+    --color-gray: #d7d2c9;
+    --color-light-gray: #e3e0da;
+    --color-muted-dark: #393939;
+    --color-muted-gray: #7a7874;
+    --color-background: #ededed;
+    --color-background-blue: #bfd4ed;
+    --color-background-auth: #dddddd;
+
+    --color-dark-transparent: #000000b3;
+    --color-gray-transparent: #0000000f;
+    --color-muted-gray-transparent: #7a787438;
+
+    --color-btn-enter: #268cf2;
+    --color-btn-enter-light: #2077ce;
+
+    /* Токены админ-панели (в единой тёплой гамме с сайтом) */
+    --admin-bg: #f4f3ef;
+    --admin-surface: var(--color-white);
+    --admin-surface-hover: #f9f8f5;
+    --admin-sidebar-bg: var(--color-gray);
+    --admin-border: #d5d1c8;
+    --admin-border-subtle: #e7e4dd;
+    --admin-text: var(--color-dark);
+    --admin-text-muted: var(--color-muted-gray);
+
+    --admin-accent: #11b470;
+    --admin-accent-hover: #0e9f62;
+    --admin-accent-active: #0c8a55;
+    --admin-accent-ring: rgb(17 180 112 / 0.18);
+
+    --admin-control-h: 42px;
+    --admin-radius-sm: 6px;
+    --admin-radius-md: 10px;
+    --admin-shadow-sm: 0 1px 3px rgb(0 0 0 / 0.05);
+    --admin-shadow-md: 0 12px 32px rgb(0 0 0 / 0.16);
+
+    --admin-sidebar-hover: rgb(17 17 17 / 0.06);
+    --admin-transition: 0.2s ease;
+
+    /* Ширина */
+    --admin-sidebar-w: 240px;
+}

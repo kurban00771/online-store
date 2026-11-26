@@ -1,0 +1,102 @@
+<main class="main">
+    <div class="container">
+        <h1 class="main-name">Меню</h1>
+        <div class="main__cart-wrapper">
+            {{#each catData}}
+            {{#if this.active}}
+            <div class="main__cart">
+                <a href="/category?id={{this.id}}" class="main__cart-link">
+                    <img src="/img/categories/{{this.img}}" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">{{this.title}}</h3>
+                </a>
+            </div>
+            {{/if}}
+            {{/each}}
+
+            {{!-- <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/pizza.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Пиццы</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/breakfasts.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Завтраки</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/garniers.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Гарниры </h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/shashlik.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Шашлыки</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/soups.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Супы</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/pie.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Чуду и мучное</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/meat_dishes.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Мясные</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/salads.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Салаты</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/rolls.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Роллы</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/dessert.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Десерты</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/hot_drinks.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Горячие напитки</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/cold_drinks.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Холодные напитки</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/burgers.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Бургеры</h3>
+                </a>
+            </div>
+            <div class="main__cart">
+                <a href="#" class="main__cart-link">
+                    <img src="/img/categories/pastes.jpg" alt="" class="main__cart-img">
+                    <h3 class="main__cart-name">Пасты</h3>
+                </a>
+            </div> --}}
+        </div>
+    </div>
+</main>

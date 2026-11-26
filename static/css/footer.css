@@ -1,0 +1,141 @@
+.footer {
+
+    /* > .footer__wrapper-top {
+        background: var(--color-gray);
+    }
+
+    > .footer__wrapper-bottom {
+        background: var(--color-light-gray);
+    } */
+}
+
+.footer__wrapper-top {
+    background: var(--color-gray);
+    padding: 10px;
+}
+
+.footer__wrapper-top .container {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+
+}
+
+.footer__wrapper-left {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.footer__logo-link {
+  display: flex;
+}
+
+.footer__logo {
+    height: 40px;
+    width: auto;
+    display: block;
+    max-width: 100%;
+}
+
+.footer__wrapper-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer__link {
+    font-size: 18px;
+    color: var(--color-dark);
+}
+
+.footer__wrapper-icon {
+    height: 16px;
+}
+
+.footer__bottom {
+    background: var(--color-light-gray);
+    padding: 30px 10px;
+}
+
+.footer__bottom .container {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.footer__bottom-left {
+    display: flex;
+    gap: 20px;
+    /* align-items: center; */
+}
+
+.footer__bottom-right {
+    display: flex;
+    gap: 10px;
+    width: 200px;
+    /* align-items: center; */
+}
+
+/* .footer__wrapper-block {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.footer__cat-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer__nav-lists {
+    column-count: 2;
+    margin-bottom: -10px;
+}
+
+
+
+.footer__lists-link {
+    margin-bottom: 10px;
+    font-weight: 100;
+}
+
+.footer__cat-address {
+    font-weight: 100;
+    margin-bottom: 10px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.footer__wrapper-copyright {
+    padding: 10px;
+    background: var(--color-gray);
+}
+
+.footer__wrapper-copyright .container {
+    text-align: center;
+}
+
+.footer__copy {
+    font-weight: 100;
+}
+
+@media (max-width: 768px) {
+
+    .footer__logo {
+        height: 30px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .footer__wrapper-left {
+        gap: 10px;
+    }
+
+    .footer__nav-lists {
+        column-count: 1;
+    }
+}

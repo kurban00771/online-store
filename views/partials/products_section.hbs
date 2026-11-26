@@ -1,0 +1,48 @@
+<section class="products_section">
+    <div class="container">
+        <ul class="tag__section">
+            {{#each catData}}
+            <li>
+                <a href="/category?id={{this.id}}" class="tag__section-link">{{this.title}}</a>
+            </li>
+            {{/each}}
+        </ul>
+
+        <div class="tag__select-mob">
+            <select class="custom-select tag__select" onchange="if(this.value) window.location.href=this.value">
+                <option value="" disabled selected>Категории</option>
+                {{#each catData}}
+                    <option value="/category?id={{this.id}}">{{this.title}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+
+        {{!-- {{#if prodData}}
+        {{#each }}
+
+        {{/each}}
+        {{/if}} --}}
+        <h1 class="products-name">{{getTitle '/category'}}</h1>
+        <div class="products__card">
+            {{getProducts '/category'}}
+            {{!-- <div class="products__card-inner">
+                <img src="/img/categories/pizza.jpg" alt="" class="products__card-img">
+                <p class="products__cat">Пиццы</p>
+                <h3 class="products__card-name">Куринная</h3>
+                <p class="products__desc">курица, шампиньоны, помидоры, сыр, соус 500г</p>
+                <div class="products__card-bottom">
+                    <p class="products__price">535 р.</p>
+                    <div class="products__count">
+                        <button class="products__minus-btn">-</button>
+                        <input type="text" class="products__count-input" readonly placeholder="1">
+                        <button class="products__plus-btn">+</button>
+                    </div>
+                    <a href="#" class="products__basket">
+                        <img src="/img/cart.svg" alt="Корзина">
+                    </a>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+</section>

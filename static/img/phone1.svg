@@ -1,0 +1,13 @@
+<svg xmlns="http://w3.org" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <!-- Корпус телефона -->
+  <rect x="11" y="4" width="26" height="40" rx="4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Динамик сверху -->
+  <line x1="21" y1="8" x2="27" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Цифра 1 по центру экрана -->
+  <text x="24" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="currentColor" text-anchor="middle" dominant-baseline="middle">1</text>
+  
+  <!-- Нижняя черта / индикатор Home -->
+  <line x1="20" y1="39" x2="28" y2="39" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg>

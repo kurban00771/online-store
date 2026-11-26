@@ -1,0 +1,67 @@
+<section class="main__section">
+    <h1 class="main__h1">Продукты</h1>
+    <div class="main__set-block">
+        <label class="main__set-label">
+            <p class="main__set-text">Продукт</p>
+            <input type="text" class="main__set-input" id="input__name" placeholder="Продукт">
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Категории</p>
+            <select id="input__cat" class="custom-select">
+                <option value="" disabled selected>Выберите категорию</option>
+                {{#each catData}}
+                <option value="{{this.id}}">{{this.title}}</option>
+                {{/each}}
+            </select>
+        </label>
+        <label class="main__set-label">
+            <p class="main__set-text">Цена</p>
+            <input type="text" class="main__set-input" id="input__price" placeholder="Цена">
+        </label>
+        <div class="main__set-wrapper">
+            <label class="main__set-label">
+                <p class="main__set-text">Описание</p>
+                <textarea class="main__set-desc" id="input__desc" placeholder="Введите текст"></textarea>
+            </label>
+            <label class="main__set-label">
+                <p class="main__set-text">Фото продукта</p>
+                <input type="file" class="main__set-input" id="input__prod-photo">
+            </label>
+            <button class="main__set-btn" id="add__prod-btn">Добавить</button>
+        </div>
+    </div>
+    <div class="main__list-top">
+        <div class="w50">ID</div>
+        <div class="w100">Фото</div>
+        <div class="w150">Категория</div>
+        <div class="w300">Название</div>
+        <div class="w100">Цена</div>
+        <div class="main__active w100">Активный</div>
+    </div>
+    <div class="main__list" id="prod_list">
+    </div>
+</section>
+
+{{!-- <input type="text" class="main__set-input" id="input__desc" placeholder="Описание"> --}}
+
+
+{{!-- <div class="main__li">
+    <div class="main__id w50">1</div>
+    <div class="main__img-block w100">
+        <img src="/img/products/piz1.jpg" class="main__img">
+    </div>
+    <div class="main__cat w150">Пиццы</div>
+    <div class="main__name w300">Маргарита</div>
+    <div class="main__price w100">200 р.</div>
+    <div class="main__active w100">Активный</div>
+</div> --}}
+
+{{!-- <label class="main__set-label">
+    <p class="main__set-text">Категории</p>
+    <select id="input__cat" class="custom-select">
+        <option value="" disabled selected>Выберите категорию</option>
+        {{#each catData}}
+        <option value="{{this.id}}">{{this.title}}</option>
+        {{/each}}
+    </select>
+</label> --}}
